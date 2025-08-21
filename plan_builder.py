@@ -15,7 +15,7 @@ from_whatsapp_number = "whatsapp:+14155238886"  # Twilio sandbox
 client = Client(account_sid, auth_token)
 
 # Recipients (comma-separated env var recommended)
-recipients = os.getenv("RECIPIENTS", "+918624925429,+917984814938").split(",")
+recipients = os.getenv("RECIPIENTS", "").split(",") if os.getenv("RECIPIENTS") else []
 
 
 # ---------------- Helper ---------------- #
