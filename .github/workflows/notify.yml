@@ -1,0 +1,33 @@
+name: WhatsApp Meal Planner Notifications
+
+on:
+  schedule:
+    # Runs at 10 AM, 2 PM, 6 PM, 8 PM IST (convert to UTC: IST = UTC+5:30)
+    - cron: '30 4 * * *'   # 10:00 AM IST
+    - cron: '30 8 * * *'   # 2:00 PM IST
+    - cron: '30 12 * * *'  # 6:00 PM IST
+    - cron: '30 14 * * *'  # 8:00 PM IST
+  workflow_dispatch:       # allow manual run from GitHub UI
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run WhatsApp notifier
+        env:
+          YOUR_ACCOUNT_SID: ${{ secrets.TWILIO_ACCOUNT_SID }}
+          YOUR_AUTH_TOKEN: ${{ secrets.TWILIO_AUTH_TOKEN }}
+          RECIPIENTS: ${{ secrets.RECIPIENTS }}
+        run: python send_whatsapp.py
