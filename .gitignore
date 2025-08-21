@@ -1,0 +1,14 @@
+# Virtual environment
+venv/
+_pycache_/
+# Environment variables
+.env
+
+# Credentials and sensitive JSON
+*.json
+monthly_groceries.json
+weekly_groceries.json
+month_plan.json
+meal_plan.xlsx
+# VSCode settings
+.vscode/

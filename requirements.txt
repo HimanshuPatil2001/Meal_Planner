@@ -1,0 +1,9 @@
+streamlit
+google-generativeai
+requests
+python-dotenv
+pandas
+openpyxl
+gspread
+oauth2client
+supabase
