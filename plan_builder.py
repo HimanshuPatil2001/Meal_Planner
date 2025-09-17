@@ -3,7 +3,6 @@ import os
 import datetime
 import argparse
 from twilio.rest import Client
-from plan_builder import load_plan, get_plan_for_date
 
 # ==============================
 # 🔹 Twilio Setup
